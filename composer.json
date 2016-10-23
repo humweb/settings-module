@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Humweb\\Settings": "src/"
+      "Humweb\\Settings\\": "src/"
     }
   },
   "autoload-dev": {
