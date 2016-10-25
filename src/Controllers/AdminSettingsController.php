@@ -2,11 +2,10 @@
 
 namespace Humweb\Settings\Controllers;
 
-use App\Http\Controllers\AdminController;
+use Humweb\Core\Http\Controllers\AdminController;
 use Humweb\Settings\Facades\Settings;
 use Humweb\Settings\Facades\SchemaManager as SettingsSchema;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class AdminSettingsController extends AdminController
 {
