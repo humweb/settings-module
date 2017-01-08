@@ -34,7 +34,6 @@ class ServiceProvider extends ModuleBaseProvider
         $this->app['modules']->put('settings', $this);
         $this->loadLang();
         $this->loadViews();
-        $this->publishViews();
     }
 
     public function register()
