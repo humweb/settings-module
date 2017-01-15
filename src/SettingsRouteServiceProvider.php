@@ -2,8 +2,8 @@
 
 namespace Humweb\Settings;
 
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
+use Illuminate\Routing\Router;
 
 class SettingsRouteServiceProvider extends RouteServiceProvider
 {
@@ -15,6 +15,7 @@ class SettingsRouteServiceProvider extends RouteServiceProvider
      * @var string
      */
     protected $namespace = 'Humweb\Settings\Controllers';
+
 
     /**
      * Define the routes for the application.

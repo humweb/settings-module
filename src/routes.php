@@ -9,8 +9,8 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 
     Route::post('admin/settings/save/{module}', [
-        'as'         => 'post.admin.settings.save',
-        'uses'       => 'AdminSettingsController@postSave',
-//        'middleware' => 'allow.only:settings.edit'
+        'as'   => 'post.admin.settings.save',
+        'uses' => 'AdminSettingsController@postSave',
+        //        'middleware' => 'allow.only:settings.edit'
     ]);
 });

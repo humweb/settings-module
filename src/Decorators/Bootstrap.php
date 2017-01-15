@@ -11,6 +11,7 @@ class Bootstrap implements DecoratorInterface
         return Form::label($for, $name, $attr);
     }
 
+
     public function text($name, $val = '', $attr = [])
     {
         $attr = $this->setOrAppendClass($attr, 'form-control');
@@ -18,24 +19,6 @@ class Bootstrap implements DecoratorInterface
         return Form::text($name, $val, $attr);
     }
 
-    public function textarea($name, $val = '', $attr = [])
-    {
-        $attr = $this->setOrAppendClass($attr, 'form-control');
-
-        return Form::textarea($name, $val, $attr);
-    }
-
-    public function select($name, $data, $val = '', $attr = [])
-    {
-        $attr = $this->setOrAppendClass($attr, 'form-control');
-
-        return Form::select($name, $data, $val, $attr);
-    }
-
-    public function controlGroup($content = '')
-    {
-        return '<div class="form-group">'.$content.'</div>';
-    }
 
     protected function setOrAppendClass($attr, $class)
     {
@@ -46,5 +29,27 @@ class Bootstrap implements DecoratorInterface
         }
 
         return $attr;
+    }
+
+
+    public function textarea($name, $val = '', $attr = [])
+    {
+        $attr = $this->setOrAppendClass($attr, 'form-control');
+
+        return Form::textarea($name, $val, $attr);
+    }
+
+
+    public function select($name, $data, $val = '', $attr = [])
+    {
+        $attr = $this->setOrAppendClass($attr, 'form-control');
+
+        return Form::select($name, $data, $val, $attr);
+    }
+
+
+    public function controlGroup($content = '')
+    {
+        return '<div class="form-group">'.$content.'</div>';
     }
 }

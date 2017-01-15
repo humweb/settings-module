@@ -9,9 +9,17 @@ class DbStorage implements SettingsStorageInterface
      */
     protected $model = 'Humweb\\Settings\\Storage\\EloquentModel';
 
+
     public function __construct()
     {
     }
+
+
+    public function getVal($key, $type = null)
+    {
+        return $this->get($key, $type, 'val')['val'];
+    }
+
 
     /**
      * Get config value.
@@ -32,10 +40,30 @@ class DbStorage implements SettingsStorageInterface
         return $model->where('key', $key)->where('configurable_type', $type)->first()->toArray();
     }
 
-    public function getVal($key, $type = null)
+
+    /**
+     * Creates new model.
+     *
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function getModel($data = [])
     {
-        return $this->get($key, $type, 'val')['val'];
+        $class = '\\'.ltrim($this->model, '\\');
+
+        return new $class($data);
     }
+
+
+    /**
+     * @param mixed $model
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
 
     /**
      * Set config value.
@@ -54,8 +82,8 @@ class DbStorage implements SettingsStorageInterface
         if (is_null($setting)) {
             //Create a new setting entry
             $setting = $this->getModel()->create([
-                'key' => $key,
-                'val' => $val,
+                'key'               => $key,
+                'val'               => $val,
                 'configurable_type' => $type,
             ]);
         } else {
@@ -64,27 +92,5 @@ class DbStorage implements SettingsStorageInterface
         }
 
         return $setting;
-    }
-
-    /**
-     * Creates new model.
-     *
-     * @param array $data
-     *
-     * @return mixed
-     */
-    public function getModel($data = [])
-    {
-        $class = '\\'.ltrim($this->model, '\\');
-
-        return new $class($data);
-    }
-
-    /**
-     * @param mixed $model
-     */
-    public function setModel($model)
-    {
-        $this->model = $model;
     }
 }

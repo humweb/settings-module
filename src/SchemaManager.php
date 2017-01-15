@@ -13,10 +13,12 @@ class SchemaManager
     protected $items = [];
     protected $schema;
 
+
     public function register($name, $class)
     {
         $this->items[$name] = $class;
     }
+
 
     public function get($name, $values = [], DecoratorInterface $decorator = null)
     {
@@ -41,6 +43,7 @@ class SchemaManager
         return $obj;
     }
 
+
     /**
      * @return array
      */
@@ -48,6 +51,7 @@ class SchemaManager
     {
         return $this->items;
     }
+
 
     /**
      * @param $classes

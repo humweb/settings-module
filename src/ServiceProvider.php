@@ -12,19 +12,20 @@ class ServiceProvider extends ModuleBaseProvider
 
         // Settings
         'settings.edit' => [
-            'name' => 'Edit Settings',
+            'name'        => 'Edit Settings',
             'description' => 'Edit settings.',
         ],
     ];
 
     protected $moduleMeta = [
-        'name' => 'Settings System',
-        'slug' => 'settings',
+        'name'    => 'Settings System',
+        'slug'    => 'settings',
         'version' => '',
-        'author' => '',
-        'email' => '',
+        'author'  => '',
+        'email'   => '',
         'website' => '',
     ];
+
 
     /**
      * Bootstrap the application events.
@@ -35,6 +36,7 @@ class ServiceProvider extends ModuleBaseProvider
         $this->loadLang();
         $this->loadViews();
     }
+
 
     public function register()
     {
@@ -60,18 +62,20 @@ class ServiceProvider extends ModuleBaseProvider
         });
     }
 
+
     public function getAdminMenu()
     {
         return [
             'Settings' => [
                 [
                     'label' => 'Site',
-                    'url' => '/admin/settings/site',
-                    'icon' => '<i class="fa fa-home" ></i>',
+                    'url'   => '/admin/settings/site',
+                    'icon'  => '<i class="fa fa-home" ></i>',
                 ],
             ],
         ];
     }
+
 
     /**
      * Get the services provided by the provider.

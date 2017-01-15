@@ -3,8 +3,8 @@
 namespace Humweb\Settings\Controllers;
 
 use Humweb\Core\Http\Controllers\AdminController;
-use Humweb\Settings\Facades\Settings;
 use Humweb\Settings\Facades\SchemaManager as SettingsSchema;
+use Humweb\Settings\Facades\Settings;
 use Illuminate\Http\Request;
 
 class AdminSettingsController extends AdminController
@@ -13,11 +13,13 @@ class AdminSettingsController extends AdminController
     protected $provider;
     protected $model;
 
+
     public function __construct()
     {
         parent::__construct();
         $this->viewShare('title', 'Settings Management');
     }
+
 
     public function getSystem($module = 'site')
     {
@@ -26,16 +28,17 @@ class AdminSettingsController extends AdminController
         $this->viewShare('title', 'Settings - '.$moduleName);
         $this->crumb('Settings')->crumb($moduleName);
 
-        $this->data['module'] = $module;
-        $this->data['settings'] = Settings::get($module.'.*');
+        $this->data['module']         = $module;
+        $this->data['settings']       = Settings::get($module.'.*');
         $this->data['settingsSchema'] = SettingsSchema::get($module, $this->data['settings']);
 
         return $this->setContent('settings::admin.index', $this->data);
     }
 
+
     public function postSave(Request $request, $module = 'site')
     {
-        $schema = SettingsSchema::get($module);
+        $schema   = SettingsSchema::get($module);
         $settings = $request->get('settings');
 
         //@todo invalidate/expire cache

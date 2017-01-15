@@ -9,15 +9,18 @@ class JsonEncoder implements EncoderInterface
         return 'json';
     }
 
+
     public function encode($value)
     {
         return json_encode($value);
     }
 
+
     public function decode($value)
     {
         return json_decode($value);
     }
+
 
     public function isEncoded($str)
     {

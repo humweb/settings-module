@@ -13,11 +13,12 @@ interface SettingsStorageInterface
      */
     public function get($key);
 
+
     /**
      * Set config value.
      *
-     * @param $key string
-     * @param $val array|string
+     * @param        $key string
+     * @param        $val array|string
      * @param string $encodeType
      */
     public function set($key, $val, $encodeType = 'str');

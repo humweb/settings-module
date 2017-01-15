@@ -17,12 +17,14 @@ class SettingsSchema
     protected $values;
     protected $decorator;
 
+
     public function __construct($values = [], $decorator = null)
     {
         $this->decorator = $decorator ?: new Bootstrap();
 
         $this->setValues($values);
     }
+
 
     /**
      * Get settings values.
@@ -34,6 +36,7 @@ class SettingsSchema
         return $this->values;
     }
 
+
     /**
      * Set values.
      *
@@ -41,21 +44,23 @@ class SettingsSchema
      */
     public function setValues($values)
     {
-        if (!empty($values)) {
+        if ( ! empty($values)) {
             $valueList = [];
 
             foreach ($values as $val) {
-                $key = $val['configurable_type'].'.'.$val['key'];
+                $key             = $val['configurable_type'].'.'.$val['key'];
                 $valueList[$key] = $val['val'];
             }
             $this->values = $valueList;
         }
     }
 
+
     public function isAcceptableKey($key)
     {
         return isset($this->settings[$key]);
     }
+
 
     public function buildForm()
     {
@@ -66,22 +71,21 @@ class SettingsSchema
             $content = $this->decorator->label($key, $setting['label']);
 
             $value = isset($this->values[$key]) ? $this->values[$key] : '';
-            $key = 'settings['.$key.']';
+            $key   = 'settings['.$key.']';
 
             //Field
             switch ($setting['type']) {
                 case 'text':
                     $content .= $this->decorator->text($key, $value);
-                break;
+                    break;
 
                 case 'textarea':
                     $content .= $this->decorator->textarea($key, $value);
-                break;
+                    break;
 
                 case 'select':
                     $content .= $this->decorator->select($key, $setting['options'], $value);
-                break;
-
+                    break;
             }
 
             //Wrapper
@@ -91,6 +95,7 @@ class SettingsSchema
         return $form;
     }
 
+
     /**
      * @return array
      */
@@ -98,6 +103,7 @@ class SettingsSchema
     {
         return $this->settings;
     }
+
 
     /**
      * @param array $settings

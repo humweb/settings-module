@@ -42,6 +42,16 @@ class Setting
     }
 
 
+    protected function parseKey($key)
+    {
+        if (strpos($key, '.') !== false) {
+            return explode('.', $key);
+        } else {
+            return ['system', $key];
+        }
+    }
+
+
     /**
      * Get config value.
      *
@@ -91,15 +101,5 @@ class Setting
         $val = $this->storage->getVal($key, $type);
 
         return $val;
-    }
-
-
-    protected function parseKey($key)
-    {
-        if (strpos($key, '.') !== false) {
-            return explode('.', $key);
-        } else {
-            return ['system', $key];
-        }
     }
 }
