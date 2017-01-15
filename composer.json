@@ -8,10 +8,10 @@
       "email": "ryun@humboldtweb.com"
     }
   ],
-  "description": "The Laravel Framework.",
+  "description": "Settings module.",
   "keywords": [
-    "framework",
-    "laravel"
+    "settings",
+    "preference"
   ],
   "require": {
     "php": ">=5.6.4",
@@ -28,8 +28,6 @@
     "classmap": [
       "tests/TestCase.php"
     ]
-  },
-  "scripts": {
   },
   "config": {
     "preferred-install": "dist"

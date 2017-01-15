@@ -2,8 +2,8 @@
 
 namespace Humweb\Settings;
 
-use Humweb\Settings\Storage\SettingsStorageInterface;
 use Humweb\Settings\Encoders\EncoderInterface;
+use Humweb\Settings\Storage\SettingsStorageInterface;
 use Illuminate\Support\Facades\Cache;
 
 class Setting
@@ -11,8 +11,9 @@ class Setting
     protected $storage;
     protected $encoder;
 
-    protected $resourceId = 0;
+    protected $resourceId   = 0;
     protected $resourceType = 'system';
+
 
     public function __construct(SettingsStorageInterface $storage = null, EncoderInterface $encoder = null)
     {
@@ -20,10 +21,11 @@ class Setting
         $this->encoder = $encoder;
     }
 
+
     /**
      * Set config value.
      *
-     * @param $key
+     * @param              $key
      * @param array|string $val
      */
     public function set($key, $val = '')
@@ -38,6 +40,7 @@ class Setting
 
         $this->storage->set($key, $val, $type);
     }
+
 
     /**
      * Get config value.
@@ -55,23 +58,25 @@ class Setting
         return $val;
     }
 
+
     public function getSection($section)
     {
-        $cacheKey = 'settings.section.'.$section;
+        $cacheKey  = 'settings.section.'.$section;
         $valueList = [];
-        $vals = Cache::remember($cacheKey, 60, function () use ($section) {
+        $vals      = Cache::remember($cacheKey, 60, function () use ($section) {
             return $this->storage->get('*', $section);
         });
 
-        if (!empty($vals)) {
+        if ( ! empty($vals)) {
             foreach ($vals as $val) {
-                $key = $section.'.'.$val['key'];
+                $key             = $section.'.'.$val['key'];
                 $valueList[$key] = $val['val'];
             }
         }
 
         return $valueList;
     }
+
 
     /**
      * Get config value.
@@ -87,6 +92,7 @@ class Setting
 
         return $val;
     }
+
 
     protected function parseKey($key)
     {
