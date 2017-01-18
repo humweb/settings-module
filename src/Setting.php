@@ -69,6 +69,11 @@ class Setting
     }
 
 
+    /**
+     * @param $section
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function getSection($section)
     {
         $cacheKey  = 'settings.section.'.$section;
@@ -84,7 +89,7 @@ class Setting
             }
         }
 
-        return $valueList;
+        return collect($valueList);
     }
 
 

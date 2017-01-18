@@ -30,8 +30,8 @@ class AdminSettingsController extends AdminController
 
         $this->data['module']         = $module;
         $this->data['settings']       = Settings::get($module.'.*');
-        $this->data['settingsSchema'] = SettingsSchema::get($module, $this->data['settings']);
 
+        $this->data['settingsSchema'] = SettingsSchema::get($module, $this->data['settings']);
         return $this->setContent('settings::admin.index', $this->data);
     }
 
