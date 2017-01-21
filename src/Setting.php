@@ -15,6 +15,7 @@ class Setting
     protected $resourceType = 'system';
 
 
+
     public function __construct(SettingsStorageInterface $storage = null, EncoderInterface $encoder = null)
     {
         $this->storage = $storage;

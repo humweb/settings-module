@@ -6,24 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class EloquentModel extends Model
 {
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
     public $incrementing = false;
-    public    $timestamps = true;
-    protected $table = 'settings';
-    /**
-     * primaryKey
-     *
-     * @var integer
-     * @access protected
-     */
+    public $timestamps   = true;
+
+    protected $table      = 'settings';
+    protected $softDelete = false;
     protected $primaryKey = null;
     protected $attributes = [
         'configurable_id' => 0
     ];
-    protected $softDelete = false;
-    protected $fillable   = array('key', 'val', 'configurable_type', 'configurable_id', 'user_id');
+
+    protected $fillable = array('key', 'val', 'configurable_type', 'configurable_id', 'user_id');
 }

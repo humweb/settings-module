@@ -87,7 +87,9 @@ class SettingsSchema
                     $content .= $this->decorator->select($key, $setting['options'], $value);
                     break;
             }
-
+            if (array_key_exists('description', $setting) && ! empty($setting['description'])) {
+                $content .= $this->decorator->helpText($setting['description']);
+            }
             //Wrapper
             $form .= $this->decorator->controlGroup($content);
         }

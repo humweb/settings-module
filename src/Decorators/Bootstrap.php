@@ -52,4 +52,11 @@ class Bootstrap implements DecoratorInterface
     {
         return '<div class="form-group">'.$content.'</div>';
     }
+
+    public function helpText($content)
+    {
+        return '<span class="help-block">'.$content.'</span>';
+    }
+
+
 }
