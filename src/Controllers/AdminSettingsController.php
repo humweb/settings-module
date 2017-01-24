@@ -28,10 +28,11 @@ class AdminSettingsController extends AdminController
         $this->viewShare('title', 'Settings - '.$moduleName);
         $this->crumb('Settings')->crumb($moduleName);
 
-        $this->data['module']         = $module;
-        $this->data['settings']       = Settings::get($module.'.*');
+        $this->data['module']   = $module;
+        $this->data['settings'] = Settings::get($module.'.*');
 
         $this->data['settingsSchema'] = SettingsSchema::get($module, $this->data['settings']);
+
         return $this->setContent('settings::admin.index', $this->data);
     }
 
