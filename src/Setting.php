@@ -32,10 +32,8 @@ class Setting
     {
         list($type, $key) = $this->parseKey($key);
 
-        $str = 'settings.section.'.$type;
-
-        if (Cache::has($str)) {
-            Cache::forget($str);
+        if (Cache::has('settings.section.'.$type)) {
+            Cache::forget('settings.section.'.$type);
         }
 
         $this->storage->set($key, $val, $type);
@@ -77,7 +75,7 @@ class Setting
     public function getSection($section)
     {
         $cacheKey  = 'settings.section.'.$section;
-        $valueList = [];
+        $settings = [];
         $vals      = Cache::remember($cacheKey, 60, function () use ($section) {
             return $this->storage->get('*', $section);
         });
@@ -85,11 +83,11 @@ class Setting
         if ( ! empty($vals)) {
             foreach ($vals as $val) {
                 $key             = $section.'.'.$val['key'];
-                $valueList[$key] = $val['val'];
+                $settings[$key] = $val['val'];
             }
         }
 
-        return collect($valueList);
+        return collect($settings);
     }
 
 

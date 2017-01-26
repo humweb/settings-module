@@ -17,6 +17,7 @@ class SchemaManager
     public function register($name, $class)
     {
         $this->items[$name] = $class;
+        return $this;
     }
 
 
