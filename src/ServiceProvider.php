@@ -40,13 +40,8 @@ class ServiceProvider extends ModuleBaseProvider
 
     public function register()
     {
-        require __DIR__.'/routes.php';
-
         $this->app->singleton('settings.schema.manager', function ($app) {
-            $manager = new SchemaManager();
-            $manager->register('site', 'Humweb\Settings\SiteSettingsSchema');
-
-            return $manager;
+            return new SchemaManager();
         });
 
         $this->app->singleton('settings.encoder', function ($app) {
@@ -62,19 +57,6 @@ class ServiceProvider extends ModuleBaseProvider
         });
     }
 
-
-    public function getAdminMenu()
-    {
-        return [
-            'Settings' => [
-                [
-                    'label' => 'Site',
-                    'url'   => '/admin/settings/site',
-                    'icon'  => '<i class="fa fa-home" ></i>',
-                ],
-            ],
-        ];
-    }
 
 
     /**
