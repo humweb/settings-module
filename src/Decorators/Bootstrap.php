@@ -56,7 +56,7 @@ class Bootstrap implements DecoratorInterface
 
     public function helpText($content)
     {
-        return '<span class="help-block">'.$content.'</span>';
+        return '<span class="form-text text-muted">'.$content.'</span>';
     }
 
 }

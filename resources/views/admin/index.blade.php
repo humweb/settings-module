@@ -1,14 +1,14 @@
 @section('content')
     {!! Form::open(['route' => ['post.admin.settings.save', $module]]) !!}
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card card-default">
+        <div class="card-header">
             <button type="submit" class="btn btn-sm btn-primary tip pull-right" title="Save"><i class="fa fa-check"></i></button>
-            <h4>Settings for <span class="label">{{ ucfirst($module) }}</span></h4>
+            <h5>Settings for <span class="label">{{ ucfirst($module) }}</span></h5>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
             {!! $settingsSchema->buildForm() !!}
         </div>
-        <div class="panel-footer">
+        <div class="card-footer">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </div>
