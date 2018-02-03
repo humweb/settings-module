@@ -88,7 +88,10 @@ class DbStorage implements SettingsStorageInterface
             ]);
         } else {
             //Update
-            $setting = $this->getModel()->where('key', $key)->where('configurable_type', $type)->update(['val' => $val]);
+            $setting = $this->getModel()
+                            ->where('key', $key)
+                            ->where('configurable_type', $type)
+                            ->update(['val' => $val]);
         }
 
         return $setting;

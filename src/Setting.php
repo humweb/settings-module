@@ -74,15 +74,15 @@ class Setting
      */
     public function getSection($section)
     {
-        $cacheKey  = 'settings.section.'.$section;
+        $cacheKey = 'settings.section.'.$section;
         $settings = [];
-        $vals      = Cache::remember($cacheKey, 60, function () use ($section) {
+        $vals     = Cache::remember($cacheKey, 60, function () use ($section) {
             return $this->storage->get('*', $section);
         });
 
         if ( ! empty($vals)) {
             foreach ($vals as $val) {
-                $key             = $section.'.'.$val['key'];
+                $key            = $section.'.'.$val['key'];
                 $settings[$key] = $val['val'];
             }
         }

@@ -17,6 +17,7 @@ class SchemaManager
     public function register($name, $class)
     {
         $this->items[$name] = $class;
+
         return $this;
     }
 
@@ -48,17 +49,21 @@ class SchemaManager
     /**
      * @return array
      */
-    public function getClasses()
+    public function getItems(): array
     {
         return $this->items;
     }
 
 
     /**
-     * @param $classes
+     * @param array $items
+     *
+     * @return $this
      */
-    public function setClasses($classes)
+    public function setItems(array $items): SchemaManager
     {
-        $this->items = $classes;
+        $this->items = $items;
+
+        return $this;
     }
 }

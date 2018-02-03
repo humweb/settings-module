@@ -58,7 +58,6 @@ class ServiceProvider extends ModuleBaseProvider
     }
 
 
-
     /**
      * Get the services provided by the provider.
      *
