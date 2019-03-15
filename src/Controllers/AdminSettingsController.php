@@ -22,7 +22,7 @@ class AdminSettingsController extends AdminController
     }
 
 
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         return $this->setContent('settings::admin.list', [
             'modules' => array_keys(SchemaManager::getItems())
