@@ -51,19 +51,35 @@ class Setting
 
 
     /**
+     * Get config record.
+     *
+     * @param $key
+     *
+     * @return mixed
+     */
+    public function get($key, $default = 'default')
+    {
+        list($type, $key) = $this->parseKey($key);
+
+        $val = $this->storage->get($key, $type);
+
+        return $val ?? $default;
+    }
+
+    /**
      * Get config value.
      *
      * @param $key
      *
      * @return mixed
      */
-    public function get($key)
+    public function getVal($key, $default = 'default')
     {
         list($type, $key) = $this->parseKey($key);
 
-        $val = $this->storage->get($key, $type);
+        $val = $this->storage->getVal($key, $type);
 
-        return $val;
+        return $val ?? $default;
     }
 
 
@@ -88,21 +104,5 @@ class Setting
         }
 
         return collect($settings);
-    }
-
-
-    /**
-     * Get config value.
-     *
-     * @param $key
-     *
-     * @return mixed
-     */
-    public function getVal($key)
-    {
-        list($type, $key) = $this->parseKey($key);
-        $val = $this->storage->getVal($key, $type);
-
-        return $val;
     }
 }

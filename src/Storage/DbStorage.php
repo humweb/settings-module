@@ -17,7 +17,7 @@ class DbStorage implements SettingsStorageInterface
 
     public function getVal($key, $type = null)
     {
-        return $this->get($key, $type, 'val')['val'];
+        return $this->get($key, $type, 'val')['val'] ?? null;
     }
 
 

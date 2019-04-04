@@ -17,4 +17,6 @@ class EloquentModel extends Model
     ];
 
     protected $fillable = array('key', 'val', 'configurable_type', 'configurable_id', 'user_id');
+
+
 }
